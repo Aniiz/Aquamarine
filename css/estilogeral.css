@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Mansalva&display=swap');
 *{
     box-sizing: border-box;
     margin: 0;
@@ -5,9 +6,11 @@
     border: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-
+a{
+    text-decoration: none;
+}
 body{
-    background-color: #181818ff;
+    background-color: rgb(245, 245, 245);
 }
 
 
@@ -15,60 +18,97 @@ body{
 /*-----------------------------------------------------------------------------------------------------------
    Estilo do menu do topo      */
 
-.top{
-    background-color: #202020ff;
-    max-width: 100%;
-    height: 3vw;
-    position: relative;
+#aaa{
+    position: fixed;
+    right: 0;
+    top: 0px;
+    width: 100%;
+    z-index: 1;
 }
 
-.decidiroqserá{
-    background-color: #202020ff;
+.top{
+    background-color: white;
+    max-width: 100%;
+    height: 70px;
+    position: relative;
+    opacity: .95;
+    /*box-shadow: 0px 0px 1px rgb(182, 182, 182);*/
+}
+
+.logo{
+    left: 5%;
+    width: 150px;
     height: 100%;
-    width: 25vw;
     position: absolute;
-    left: 0px;
+}
+
+.logo p{
+    height: 100%;
+    color: #67E0F5;
+    text-align: right;  
+    font-family: 'Mansalva', cursive;
+    font-size: 25px;
+    user-select: none;
+    padding: 12px;
 }
 
 .search{
-    background-color: #202020ff;
     height: 100%;
     width: 50vw;
     position: absolute;
     right: 25vw;
+    top:  0;
 }
 
 .options{
-    background-color: #202020ff;
     height: 100%;
-    width: 25vw;
+    width: 550px;
     right: 0px;
+    top: 0;
     position: absolute;
-}
-/*-----------------------------------------------------------------------------------------------------------
-   Estilo do Menu inf       */
-
-.abxtop{
-    height: 15vh;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-}
-.menuinf{
-    background-color: #ffa500;
-    border-radius: 50px;
-    height: 5vh;
-    width: 70vw;    
-
+ 
 }
 
-.menuinf a{
-    text-decoration: none;
+#menuH{
+    list-style-type: none;
+    padding: 0;
+    height: 100%;
+}
+
+#menuH li{
+    display: inline;
+    height: 100%;
+
+}
+#menuH a{
     color: black;
-    font-weight: bold;
+    display: inline-block;
+    text-decoration: none;
+    padding: 20px;
+    height: 100%;
+    font: bold;   
 }
+
+#menuH a:hover{
+    color: white;
+    background-color: #67E0F5;
+    display: inline-block;
+    padding: 20px;
+    border-radius: 3px;
+    transition: 0.2s linear;  
+}
+
+/*-----------------------------------------------------------------------------------------------------------
+   Pag Embarcações      */
+
+.conteudo{
+    position: relative;
+    top: 70px;
+    width: 100%;
+}
+
+
+   
 /*-----------------------------------------------------------------------------------------------------------
    Estilo do carrossel      */
 .vitrine{
@@ -77,7 +117,7 @@ body{
     justify-content: center;
     min-width: 100vw;
     min-height: 70vh;
-    background-color: #181818ff;
+    background-color: rgb(245, 245, 245);
 
 }
 .carrosel{
