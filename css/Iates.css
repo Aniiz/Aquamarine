@@ -1,0 +1,35 @@
+/*-----------------------------------------------------------------------------------------------------------
+   Pag Embarcações      */
+
+.imgtop{
+    width: 100%;
+    height: 550px;
+    overflow: hidden;
+}
+
+.imgtop img{
+    width: 100%;
+    mask-position: relative;
+    margin: -120px 0 0 0px;
+   
+}
+
+.imgtop h2{
+    width: 100%;
+    position: absolute;
+    font-size: 100px;
+    color: white;
+    z-index: 1;
+    bottom: 0;
+    padding-left: 2%;
+    user-select: none;
+}
+
+#titulocategoria{
+    background-color: black;
+    opacity: 0.2;
+    width: 100%;
+    height: 22%;
+    position: absolute;
+    bottom: 0;
+}
