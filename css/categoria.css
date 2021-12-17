@@ -1,0 +1,18 @@
+
+
+.itensvitrine{
+    min-width: 70vw;
+}
+
+.iate {
+    border:3px solid chocolate;
+    border-radius: 30px;
+    width: 300px;
+    height: 150px;
+}
+
+.iatetext {
+    font-size: 150%;
+    color: black;
+    font-size: 30px;
+}
