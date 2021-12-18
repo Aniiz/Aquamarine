@@ -8,9 +8,11 @@
     font-family: 'Balsamiq Sans', cursive;
     font-size: 16px;
 }
+
 a{
     text-decoration: none;
 }
+
 body{
     background-color: rgb(245, 245, 245);
 }
@@ -117,13 +119,14 @@ body{
 
 .imgtop{
     width: 100%;
-    height: 80vh;
+    max-height: 80vh;
     overflow: hidden;
     position: relative;
 }
 
 .imgtop img{
     width: 100%;
+    min-height: 80vh;
     mask-position: absolute;
     margin: -120px 0 0 0px;
    
