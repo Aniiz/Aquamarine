@@ -62,9 +62,10 @@
 .cards:hover p{
     transition: 0.5s linear;  
     opacity: 1;
+    z-index: 1;
 }
 
 .cards:hover img{
-    transition: 0.5s linear; 
-    height: 103%;
+    transition: 0.2s linear; 
+    transform: scale(1.05);
 }
