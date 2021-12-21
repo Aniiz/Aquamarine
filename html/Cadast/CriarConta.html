@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content=" Anizio Moreira dos Santos Filho, Gustavo Assunção da Silva e Pedro Lucas N. de Aguiar e  ">
+    <link rel="stylesheet" href='../../css/estilogeral.css'>
+    <link rel="stylesheet" href="../../css/contaECompra.css">
+    <link rel="icon" href="../../img/icon.svg">
+    <title>AquaMarine-Dados Da Compra</title>
+</head>
+<body>
+    
+    <header>
+
+            <div class="top">
+                <div class="logo">
+                    <a href="../../index.html">
+                        <p>AquaMarine</p>
+                    </a>
+                </div>
+
+
+                <div class="options">
+                    <ul>
+                        <li class="drop">
+                            <a href="../Categoria.html">Categorias</a>
+                            <ul>
+                                <li><a href="../Iates.html">Iates</a></li>
+                                <li><a href="../Jet.html">Jet Skis</a></li>
+                                <li><a href="../Catamarã.html">Catamarã</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li>
+                            <a href="">Programação</a>
+                        </li>
+
+                        <li>
+                            <a href="">Serviços</a>
+                        </li>
+
+                        <li>
+                            <a href="../Cadast/CriarConta.html">Login</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+    </header>
+
+    
+    <div class="conteudo">
+
+        <div class="imgtop">
+
+            <img src="../../img/newaccount.jpg" alt="">
+        </div>
+
+    </div>
+
+    <div class="compra">
+    
+        <h1 style="font-size: 150%;">Realizar Cadastro</h1><br>
+        <form method="post">
+
+           <fieldset>
+                <legend>Informações de cadastro</legend>
+                nome:<br>
+                <input type="text" name="nome" required><br>
+                Nome de usuario:<br>
+                <input type="text" nome="Nome de usuario" required><br>
+                senha:<br>
+                <input type="password" name="senha" required><br>
+                CPF:<br>
+                <input type="text" name="CFP" required maxlength="11"><br>
+                Email:<br>
+                <input type="email" name="Email" required><br><br>
+                <input class="botão" type="button" name="Concluir" value="Concluir cadastro" onclick="location.href ='ContaCriada.html';" >
+            </fieldset>
+
+       </form>
+
+    </div>
+
+    <div class="rodape">
+        
+        <div class="text">
+            <h2>Entre em contato conosco:</h2>
+            <p>Email: AquaMarine@email.com</p>
+            <p>Telefone: 4002-8922</p>
+        </div>
+
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

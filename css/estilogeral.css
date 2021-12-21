@@ -114,7 +114,7 @@ body{
 .conteudo{
     top: 60px;
     width: 100%;
-    padding-bottom: 15px;
+    height: 100%;
 }
 
 .imgtop{
@@ -151,4 +151,21 @@ body{
     width: 100%;
     height: 200px;
     background-color: white;
+    bottom: 0px;
+    text-align: center;
+    display: table;
+    user-select: none;
+}
+
+.text{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.text h2{
+    padding: 20px;
+}
+
+.text p{
+    padding: 20px;
 }
