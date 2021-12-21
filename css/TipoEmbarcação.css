@@ -1,18 +1,5 @@
 /*-----------------------------------------------------------------------------------------------------------
    Pag Iates  */
-
-
-.imgtop h2{
-    width: 100%;
-    font-size: 100px;
-    color: white;
-    padding-left: 2%;
-    background-color: rgb(0, 0, 0,0.2);
-    user-select: none;    
-    bottom: 0px;
-    position: absolute;
-}
-
 .fundomostruario{
     width: 80%;
     height: 500px;
