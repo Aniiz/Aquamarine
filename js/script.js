@@ -1,22 +1,12 @@
 /* -----------------------------------------------------------------------------------------------------------
-        Script da vitriine */
+        Script Botão menu superior */
 
-const imgs = document.getElementById("img");
-const img = document.querySelectorAll("#img img")
+const btnmenu = document.getElementById('clicavel')
 
-let idx = 0;
-
-function carrossel(){
-    idx++;
-
-    if(idx > img.length - 1){
-        idx = 0;
-    }
-
-    imgs.style.transform = `translateX(${-idx*70}vw)`
+function show(){
+    const options = document.getElementById('options')
+    options.classList.toggle('ativo')
+    options.classList.toggle('options')
 }
 
-setInterval(carrossel, 1800);
-
-/* -----------------------------------------------------------------------------------------------------------
-        Script dark mode */
+btnmenu.addEventListener('click', show)

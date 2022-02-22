@@ -14,7 +14,7 @@ a{
 }
 
 body{
-    background-color: rgb(245, 245, 245);
+    background-color: #ffffff;
 }
 
 
@@ -24,12 +24,14 @@ body{
 
 
 .top{
-    background-color: white;
+    background-color: none;
     width: 100%;
     min-height: 60px;
     position: fixed;
     opacity: .95;
     z-index: 2;
+    display: flex;
+    background-color: rgb(255, 255, 255);
 }
 
 .logo{
@@ -47,47 +49,110 @@ body{
     user-select: none;
 }
 
-.options{
-    height: 100%;
-    width:600px;
-    right: 0px;
-    top: 0;
-    position: absolute;
-    display: flex;
+.botão1{
+height: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+position: absolute;
+right: 25px;
 }
 
-.options ul{
-    list-style-type: none;
-    height: 100%;  
+#checkbox-menu{
+    position: absolute;
+    opacity: 0;
+}
+
+label{
+    cursor: pointer;
+    position: relative;
+    display: block;
+    height: 22px;
+    width: 30px;
+}
+
+label span{
+    position: absolute;
+    display: block;
+    height: 5px;
+    width: 100%;
+    border-radius: 30px;
+    background-color: #67E0F5;
+    transition: 0.25s ease-in-out;
+}
+
+
+label span:nth-child(1){
+    top: 0px;
+}
+label span:nth-child(2){
+    top: 8px;
+}
+label span:nth-child(3){
+    top: 16px;
+}
+
+
+#checkbox-menu:checked + label span:nth-child(1){
+    transform: rotate(-45deg);
+    top: 8px;
+}
+#checkbox-menu:checked + label span:nth-child(2){ 
+    opacity: 0;
+}
+#checkbox-menu:checked + label span:nth-child(3){
+    transform: rotate(45deg);
+    top: 8px;
+}
+
+.options{
+    display: none;  
+}
+
+.ativo{
+    top: 60px;
+    height: 100%;
+    width: 20%;
+    position: fixed;
+    z-index: 1;
+    background-color: rgb(255, 255, 255, 0.950);
+    user-select: none;
+    right: 0px;
+    border: 1px solid;
+    border-color: rgba(0, 0, 0, 0.048);
+}
+
+.ativo ul{
+    width: 100%;
+    list-style-type: none; 
     position: absolute;
     text-align: center;
-    right: 0;
     vertical-align: middle;
-    display: inline;
 }
 
-.options li{
+.ativo li{
     display: inline-block;
     height: 100%;
+    width: 100%;
     position: relative;
 
 }
 
-.options a{
-    color: black;
+.ativo a{
+    color: #67E0F5;
     display: block;
     height: 100%;
     font: bold;  
-    padding: 20px;
+    padding: 30px;
     width: 100%;
 
 }
 
-.options a:hover{
-    color: white;
+.ativo a:hover{
+    color: rgb(0, 0, 0);
     background-color: #67E0F5;
     display: inline-block;
-    padding: 20px;
+    padding: 30px;
     transition: 0.2s linear;  
     height: 100%;
 }
@@ -96,16 +161,21 @@ body{
     position: absolute;
     display: none;
     width: 100%;
+    right: 100%;
+    top: -1px;
+    border: 1px solid;
+    border-color: rgba(0, 0, 0, 0.048);
 }
 
 .drop li{
-    display: block;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.950);
+    z-index: 1;
 }
 
 .drop:hover ul{
     display: block;
 }
+
 
 
 /*-----------------------------------------------------------------------------------------------------------
@@ -115,6 +185,7 @@ body{
     top: 60px;
     width: 100%;
     height: 100%;
+    user-select: none;
 }
 
 .imgtop{
@@ -149,8 +220,6 @@ body{
 
 .rodape{
     width: 100%;
-    height: 200px;
-    background-color: white;
     bottom: 0px;
     text-align: center;
     display: table;
@@ -163,9 +232,11 @@ body{
 }
 
 .text h2{
-    padding: 20px;
+    padding: 7px;
+    font-size: 20px;
 }
 
 .text p{
-    padding: 20px;
+    padding: 2px;
+    font-size: 13px;
 }
