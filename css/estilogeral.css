@@ -22,22 +22,10 @@ body{
 /*-----------------------------------------------------------------------------------------------------------
    Estilo do menu do topo      */
 
-
-.top{
-    background-color: none;
-    width: 100%;
-    min-height: 60px;
-    position: fixed;
-    opacity: .95;
-    z-index: 2;
-    display: flex;
-    background-color: rgb(255, 255, 255);
-}
-
 .logo{
     width: 250px;
-    height: 100%;
-    position: absolute;
+    position: fixed;
+    z-index: 2;
 }
 
 .logo p{
@@ -50,12 +38,12 @@ body{
 }
 
 .botão1{
-height: 100%;
-display: flex;
-align-items: center;
-justify-content: center;
-position: absolute;
-right: 25px;
+    height: 100%;
+    display: flex;
+    position: fixed;
+    right: 25px;
+    top: 15px;
+    z-index: 2;
 }
 
 #checkbox-menu{
@@ -110,16 +98,11 @@ label span:nth-child(3){
 }
 
 .ativo{
-    top: 60px;
-    height: 100%;
     width: 20%;
     position: fixed;
     z-index: 1;
-    background-color: rgb(255, 255, 255, 0.950);
     user-select: none;
     right: 0px;
-    border: 1px solid;
-    border-color: rgba(0, 0, 0, 0.048);
 }
 
 .ativo ul{
@@ -128,6 +111,9 @@ label span:nth-child(3){
     position: absolute;
     text-align: center;
     vertical-align: middle;
+    border-bottom: 1px solid;
+    border-left: 1px solid;
+    border-color: rgba(0, 0, 0, 0.048);
 }
 
 .ativo li{
@@ -145,12 +131,13 @@ label span:nth-child(3){
     font: bold;  
     padding: 30px;
     width: 100%;
+    background-color: rgba(255, 255, 255, 0.911);
 
 }
 
 .ativo a:hover{
-    color: rgb(0, 0, 0);
-    background-color: #67E0F5;
+    color: rgb(255, 255, 255);
+    background-color: #99f2e5ff;
     display: inline-block;
     padding: 30px;
     transition: 0.2s linear;  
@@ -162,7 +149,7 @@ label span:nth-child(3){
     display: none;
     width: 100%;
     right: 100%;
-    top: -1px;
+    top: -2px;
     border: 1px solid;
     border-color: rgba(0, 0, 0, 0.048);
 }
@@ -186,6 +173,7 @@ label span:nth-child(3){
     width: 100%;
     height: 100%;
     user-select: none;
+    position: absolute;
 }
 
 .imgtop{
@@ -213,30 +201,4 @@ label span:nth-child(3){
     position: absolute;
     font-size: 80px;
     bottom: 0px;
-}
-
-/*-----------------------------------------------------------------------------------------------------------
-   Estilo do Rodapé      */
-
-.rodape{
-    width: 100%;
-    bottom: 0px;
-    text-align: center;
-    display: table;
-    user-select: none;
-}
-
-.text{
-    display: table-cell;
-    vertical-align: middle;
-}
-
-.text h2{
-    padding: 7px;
-    font-size: 20px;
-}
-
-.text p{
-    padding: 2px;
-    font-size: 13px;
 }

@@ -1,0 +1,173 @@
+/*-----------------------------------------------------------------------------------------------------------
+   Estilo Part 1  */
+
+.ConttIMG{
+    height: 90vh;
+    position: relative;
+}
+
+#imagem1{
+    height: 100%;
+    left: 30px;
+    bottom: 0px;
+    position: absolute; 
+    z-index: -1;
+}
+
+#imagem1 img{
+    height: 100%;
+    max-width: 100%;
+}
+#txt1{
+    width: 60%;
+    right: 30px;
+    height: 100%;
+    position: absolute;
+}
+
+.ConttIMG h1{
+    color: #99f2e5ff;
+    font-family: 'Mansalva', cursive;
+    font-size: 90px;
+    user-select: none;
+    position: relative;
+    text-align: right;
+    line-height: 1;
+    top: 60px;
+}
+
+.ConttIMG h3{
+    color: #ff9a79ff;
+    position: relative;
+    user-select: none;
+    font-size: 30px;
+    text-align: right;
+    top: 80px;
+}
+
+.ConttIMG a{
+    position: absolute;
+    text-align: right;
+    border-radius: 10%;
+    padding: 15px;
+    color: white;
+    font-size: 30px;
+    right: 17%;
+    bottom: 100px;
+    background-position: 0%;
+    background-color: #99f2e5ff;
+    cursor: pointer;
+}
+
+/*-----------------------------------------------------------------------------------------------------------
+   Estilo Part 2  */
+
+.Conttvts {
+    margin-top: 120px;
+    display: flex;
+    flex-wrap: wrap;
+    user-select: none;
+}
+
+.Conttvts img{
+    width: 100%;
+}
+
+.Conttvts div{
+    width: 20%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+.Conttvts h3{
+    text-align: center;
+    color: #67E0F5;
+    font-size: 35px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.Conttvts p{
+    text-align: center;
+    font-size: 25px;
+}
+
+/*-----------------------------------------------------------------------------------------------------------
+   Estilo Part 3  */
+
+.Conttsvc{
+    user-select: none;
+    height: 96vh;
+    margin-top: 100px;
+    position: relative;
+}
+
+.svc1{
+    display: flex;
+    position: absolute;
+    height: 50%;
+    width: 50%;
+    right: 80px;
+}
+
+#svcimg1{
+    height: 100%;
+}
+
+#svcimg1 img{
+    width: 100%;
+}
+
+#svctxt1{
+    height: 100%;
+}
+
+#svctxt1 h3{
+    text-align: right;
+    color: #67E0F5;
+    font-size: 35px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-right: 7px;
+}
+
+#svctxt1 p{
+    text-align: right;
+    font-size: 18px;
+    margin-right: 7px;
+}
+
+
+
+
+.svc2{
+    display: flex;
+    position: absolute;
+    height: 50%;
+    width: 50%;
+    left: 80px;
+    bottom: 0px;
+    margin-bottom: 30px;
+}
+
+#svcimg2 img{
+    height: 100%;
+    left: 30px;
+}
+
+
+#svctxt2 h3{
+    text-align: left;
+    color: #67E0F5;
+    font-size: 35px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+#svctxt2 p{
+    text-align: left;
+    font-size: 18px;
+    margin-left: 10px;
+}
