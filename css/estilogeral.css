@@ -172,7 +172,7 @@ label span:nth-child(3){
     top: 60px;
     width: 100%;
     user-select: none;
-    position: absolute;
+    position: relative;
 }
 
 .imgtop{
