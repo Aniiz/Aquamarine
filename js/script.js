@@ -13,7 +13,7 @@ btnmenu.addEventListener('click', show)
 
 
 
-// da get no numero de itens no carrinho;
+// da get no numero de itens no carrinho e exibe no menu;
 function numeroitenscarrinho() {
     let numeroprodutos = localStorage.getItem('numerocarrinho')
 
