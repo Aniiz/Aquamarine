@@ -91,6 +91,7 @@
 .Conttvts p{
     text-align: center;
     font-size: 25px;
+    color: rgb(145, 145, 145);
 }
 
 /*-----------------------------------------------------------------------------------------------------------
@@ -136,6 +137,7 @@
     text-align: right;
     font-size: 18px;
     margin-right: 7px;
+    color: rgb(131, 131, 131);
 }
 
 
@@ -170,4 +172,5 @@
     text-align: left;
     font-size: 18px;
     margin-left: 10px;
+    color: rgb(131, 131, 131);
 }
