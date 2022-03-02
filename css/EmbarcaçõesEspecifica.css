@@ -90,12 +90,13 @@
 .fotos img{
     height: 100%;
     min-width: 100%;
+    cursor: pointer;
 }
 
 .fotos:hover img{
     transition: 0.2s linear; 
     transform: scale(1.05);
-    cursor: pointer;
+
 }
 
 /*-----------------------------------------------------------------------------------------------------------

@@ -1,6 +1,4 @@
-/* -----------------------------------------------------------------------------------------------------------
-        Script Carrinho */
-
+// ---------------------------- produtos + infos ----------------------------
 let produtos = [
     {
         nome:'Azimut Grande S10',
@@ -40,12 +38,12 @@ let produtos = [
     },
 ]
 
-
+// ---------------------------- Ativa quando clica no botão alugar ----------------------------
 let alugar = document.querySelectorAll('.opcooesdiv2')
 const nomeproduto = document.getElementById('produto').textContent
 
 
-    // Ativa quando clica no botão alugar
+
 for (let i=0; i < alugar.length; i++){
     alugar[i].addEventListener('click', () => {
         numerocarrinho(produtos[conta(produtos, nomeproduto)])
@@ -55,7 +53,7 @@ for (let i=0; i < alugar.length; i++){
 }
 
 
-    // Conta o numero de itens no carrinho
+// ---------------------------- Conta o numero de itens no carrinho ----------------------------
 function numerocarrinho(prt){
     let numeroprodutos = localStorage.getItem('numerocarrinho')
 
@@ -73,7 +71,7 @@ function numerocarrinho(prt){
 
 }
 
-    //Verifica o index do produto apartir do nome
+// -------------------------- Verifica o index do produto apartir do nome --------------------------
 function conta(obj, val){
     i = 0
     for(item in obj){
@@ -86,9 +84,10 @@ function conta(obj, val){
     }
 }
 
-// verificar se o item está no local storage e o add
+// ----------------------- Verificar se o item está no local storage e o add -----------------------
 function additem(prt){
     let itemcarrinho = localStorage.getItem('Produtos no Carrinho')
+    let qtid = localStorage.getItem('numerocarrinho')
     itemcarrinho = JSON.parse(itemcarrinho)
 
     if( itemcarrinho != null){
@@ -96,17 +95,17 @@ function additem(prt){
         if(itemcarrinho[prt.tag] == undefined){
             itemcarrinho = {
                 ...itemcarrinho,
-                [prt.tag] : prt
+                [qtid] : prt
             }
 
         }
-        itemcarrinho[prt.tag].nocarrinho += 1
+        itemcarrinho[qtid].nocarrinho += 1
     }
     else{
     
         prt.nocarrinho = 1
         itemcarrinho = {
-            [prt.tag]: prt
+            [qtid]: prt
         }
     }
 
@@ -114,8 +113,7 @@ function additem(prt){
 }
 
 
-/* -----------------------------------------------------------------------------------------------------------
-        Script abrir opções de alugel */
+// ---------------------------- Abrir opções de alugel ----------------------------
 
 const fundocinza = document.getElementById('blockcopcoes')
 const botfechar = document.getElementById('fecharopcoes')

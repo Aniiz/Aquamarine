@@ -228,7 +228,33 @@ label span:nth-child(3){
     position: relative;
     margin-top: auto;
     margin-bottom: auto;
+    overflow-y: auto;
+}
+
+.blockcarrinhofilho h3{
+    color: #67E0F5;
+    text-align: center;
+    font-size: 20px;
+    margin-top: 20px;
+    user-select: none;
     
+}
+
+.blockcarrinhoprodutos{
+    margin-left: 20px;
+    margin-right: 40px;
+}
+
+.produto{
+    width: 100%;
+    height: 200px;
+    margin-bottom: 3px;
+
+}
+
+.produto img{
+    height: 100%;
+
 }
 
 .fecharopcoes1{
