@@ -97,6 +97,10 @@ label span:nth-child(3){
     display: none;  
 }
 
+.nmrcarrinho{
+    cursor: pointer;  
+}
+
 .ativo{
     width: 20%;
     position: fixed;
@@ -169,10 +173,9 @@ label span:nth-child(3){
    Estilo do conteúdo      */
 
 .conteudo{
-    top: 60px;
     width: 100%;
     user-select: none;
-    position: absolute;
+    position: relative;
 }
 
 .imgtop{
@@ -185,8 +188,7 @@ label span:nth-child(3){
 .imgtop img{
     width: 100%;
     min-height: 80vh;
-    mask-position: absolute;
-    margin: -120px 0 0 0px;
+    margin: -50px 0 0 0px;
    
 }
 
@@ -200,4 +202,64 @@ label span:nth-child(3){
     position: absolute;
     font-size: 80px;
     bottom: 0px;
+}
+
+/*-----------------------------------------------------------------------------------------------------------
+   Estilo do carrinho*/
+
+
+.blockcarrinho{
+    background-color: rgba(0, 0, 0, 0.274);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 3;
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+.blockcarrinhofilho{
+    height: 90vh;
+    width: 80vw;
+    border-radius: 6px;
+    background-color: white;
+    position: relative;
+    margin-top: auto;
+    margin-bottom: auto;
+    
+}
+
+.fecharopcoes1{
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: 0px;
+    margin: 15px;
+    cursor: pointer;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    z-index: 5;
+}
+
+.fecharopcoes1 label span{
+    position: relative;
+    height: 5px;
+    width: 100%;
+    border-radius: 30px;
+    background-color: #67E0F5;
+    transition: 0.25s ease-in-out;
+}
+
+.fecharopcoes1 label span:nth-child(1){
+    top: 9px;
+    position: relative;
+    transform: rotate(-45deg);
+}
+.fecharopcoes1 label span:nth-child(2){
+    top: 4px;
+    position: relative;
+    transform: rotate(45deg);
 }

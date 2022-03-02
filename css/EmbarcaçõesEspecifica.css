@@ -37,8 +37,6 @@
     border-radius: 5px;
     margin-bottom: 50px;
     cursor: pointer;
-
-
 }
 
 .btnalugar p{
@@ -98,4 +96,86 @@
     transition: 0.2s linear; 
     transform: scale(1.05);
     cursor: pointer;
+}
+
+/*-----------------------------------------------------------------------------------------------------------
+    Estilo opções de alugel  */
+
+.ON{
+    background-color: rgba(0, 0, 0, 0.274);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 3;
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+.blockopbranco{
+    height: 90vh;
+    width: 80vw;
+    border-radius: 6px;
+    background-color: white;
+    position: relative;
+    margin-top: auto;
+    margin-bottom: auto;
+    
+}
+
+#fecharopcoes{
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: 0px;
+    margin: 15px;
+    cursor: pointer;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    z-index: 5;
+}
+
+#fecharopcoes label span{
+    position: relative;
+    height: 5px;
+    width: 100%;
+    border-radius: 30px;
+    background-color: #67E0F5;
+    transition: 0.25s ease-in-out;
+}
+
+#fecharopcoes label span:nth-child(1){
+    top: 9px;
+    position: relative;
+    transform: rotate(-45deg);
+}
+#fecharopcoes label span:nth-child(2){
+    top: 4px;
+    position: relative;
+    transform: rotate(45deg);
+}
+
+.opcooesdiv1{
+    position: relative;
+    height: 90%;
+}
+
+.opcooesdiv2{
+    position: relative;
+    height: 10%;
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    user-select: none;
+}
+
+.opcooesdiv2 p{
+    color: white;
+    background-color:  #67E0F5;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px;
+    text-align: center;
 }

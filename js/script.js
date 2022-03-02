@@ -22,3 +22,42 @@ function numeroitenscarrinho() {
     }
 }
 numeroitenscarrinho()
+
+
+ // Abre e fecha o carrinho
+let carrinhocomitem = document.querySelector('.blockcarrinho')
+let fecharcarrinho = document.querySelector('.fecharopcoes1')
+let abrircarrinho = document.querySelector('.nmrcarrinho')
+
+
+fecharcarrinho.addEventListener('click', esconder)
+abrircarrinho.addEventListener('click', aparecer)
+
+function esconder(){
+    carrinhocomitem.style.display = 'none';
+}
+
+function aparecer(){
+    carrinhocomitem.style.display = 'flex';
+}
+
+/* -----------------------------------------------------------------------------------------------------------
+        calcular custo total */
+function custotal(prt){
+    let custocarrinho = localStorage.getItem('ValorTotal')
+
+    
+    console.log('Valor Carrinho é', custocarrinho)
+    console.log(typeof custocarrinho)
+
+    if(custocarrinho != null) {
+        custocarrinho = parseInt(custocarrinho)
+        localStorage.setItem("ValorTotal", custocarrinho + prt.preço)
+    }
+    else{
+        localStorage.setItem("ValorTotal",prt.preço)
+    }
+
+
+
+}

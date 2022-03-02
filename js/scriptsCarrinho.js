@@ -41,22 +41,22 @@ let produtos = [
 ]
 
 
-let alugar = document.querySelectorAll('.btnalugar')
+let alugar = document.querySelectorAll('.opcooesdiv2')
 const nomeproduto = document.getElementById('produto').textContent
 
 
-    // Ativa quando clica no botão alugar77
+    // Ativa quando clica no botão alugar
 for (let i=0; i < alugar.length; i++){
     alugar[i].addEventListener('click', () => {
-    numerocarrinho()
+        numerocarrinho(produtos[conta(produtos, nomeproduto)])
+        custotal(produtos[conta(produtos, nomeproduto)])
         
-    console.log(conta(produtos, nomeproduto))
     })
 }
 
 
     // Conta o numero de itens no carrinho
-function numerocarrinho(){
+function numerocarrinho(prt){
     let numeroprodutos = localStorage.getItem('numerocarrinho')
 
     numeroprodutos = parseInt(numeroprodutos)
@@ -69,6 +69,7 @@ function numerocarrinho(){
         document.querySelector('.nmrcarrinho span').textContent = 1
     }
 
+    additem(prt)
 
 }
 
@@ -85,3 +86,49 @@ function conta(obj, val){
     }
 }
 
+// verificar se o item está no local storage e o add
+function additem(prt){
+    let itemcarrinho = localStorage.getItem('Produtos no Carrinho')
+    itemcarrinho = JSON.parse(itemcarrinho)
+
+    if( itemcarrinho != null){
+
+        if(itemcarrinho[prt.tag] == undefined){
+            itemcarrinho = {
+                ...itemcarrinho,
+                [prt.tag] : prt
+            }
+
+        }
+        itemcarrinho[prt.tag].nocarrinho += 1
+    }
+    else{
+    
+        prt.nocarrinho = 1
+        itemcarrinho = {
+            [prt.tag]: prt
+        }
+    }
+
+    localStorage.setItem('Produtos no Carrinho', JSON.stringify(itemcarrinho))
+}
+
+
+/* -----------------------------------------------------------------------------------------------------------
+        Script abrir opções de alugel */
+
+const fundocinza = document.getElementById('blockcopcoes')
+const botfechar = document.getElementById('fecharopcoes')
+const iniciaralugar = document.getElementById('btnalugar')
+
+
+botfechar.addEventListener('click', esconde)
+iniciaralugar.addEventListener('click', aparece)
+
+function esconde(){
+    fundocinza.style.display = 'none';
+}
+
+function aparece(){
+    fundocinza.style.display = 'flex';
+}
