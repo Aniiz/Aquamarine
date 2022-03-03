@@ -88,7 +88,6 @@ function selecionabotãodeletar(){
     let itemnocarrinho = localStorage.getItem('carrinhoitens')
     itemnocarrinho = JSON.parse(itemnocarrinho)
   
-    console.log(itemnocarrinho)
     for (let i=0; i < botaodeletar.length ; i++){
         botaodeletar[i].addEventListener('click', () => { 
             
@@ -100,10 +99,5 @@ function selecionabotãodeletar(){
             atualizar()
         })       
     }
-    
-    
-   
 
-    
-    console.log(cartitens)
 }

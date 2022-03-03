@@ -121,3 +121,40 @@ function conta(obj, val){
     }
 }
 
+ //------------- Maximizar foto -------------
+
+let foto = document.getElementsByClassName('fotos')
+let divaparecer = document.getElementsByClassName('fotomax')
+let divdesaparecer = document.getElementsByClassName('fotomaxatv')
+let divdaimg = document.querySelector('.divfotomax')
+let endereço =''
+
+
+for (let i=0; i < foto.length ; i++){
+    foto[i].addEventListener('click', () => { 
+        
+        divaparecer[0].classList.toggle('fotomaxatv')
+        divaparecer[0].classList.toggle('fotomax')
+
+        
+        endereço = foto[i].children[0].getAttribute('src')
+        console.log(endereço)
+        console.log(endereço)
+        divdaimg.innerHTML = ` <img src="${endereço}" alt="">
+        ` 
+        
+
+
+        for (let i=0; i < divdesaparecer.length ; i++){
+            divdesaparecer[i].addEventListener('click', () => { 
+                
+                divdesaparecer[0].classList.toggle('fotomax')
+                divdesaparecer[0].classList.toggle('fotomaxatv')
+
+                divdaimg.innerHTML = `` 
+                
+            }) 
+        }
+    })     
+    
+}
