@@ -10,17 +10,6 @@ function show(){
 
 btnmenu.addEventListener('click', show)
 
-// ------------------- Da get no numero de itens no carrinho e exibe no menu -------------------
-function numeroitenscarrinho() {
-    let numeroprodutos = localStorage.getItem('numerocarrinho')
-
-    if(numeroprodutos) {
-        document.querySelector('.nmrcarrinho span').textContent = numeroprodutos
-    }
-}
-
-numeroitenscarrinho()
-
  // ---------------------------- Abre e fecha o carrinho ----------------------------
 let carrinhocomitem = document.querySelector('.blockcarrinho')
 let fecharcarrinho = document.querySelector('.fecharopcoes1')
@@ -39,44 +28,82 @@ function esconder(){
 function aparecer(){
     carrinhocomitem.style.display = 'flex';
     corpo.style.overflow = 'hidden';
-    montarcarrinho()
+    atualizar()
+    selecionabotãodeletar()
 }
 
-// ---------------------------- Calcular custo total ---------------------------- 
-function custotal(prt){
-    let custocarrinho = localStorage.getItem('ValorTotal')
+// ------------------ Atualiza o carrinho ------------------
 
-    if(custocarrinho != null) {
-        custocarrinho = parseInt(custocarrinho)
-        localStorage.setItem("ValorTotal", custocarrinho + prt.preço)
+var cartitens = []
+
+function atualizar(){
+    let carrinhohtml = document.querySelector('.blockcarrinhoprodutos')
+
+    if( cartitens.length === 0){
+        itenslocalstorage = localStorage.getItem('carrinhoitens')
+        itenslocalstorage = JSON.parse(itenslocalstorage)
+        for(i in itenslocalstorage){
+            cartitens.push(itenslocalstorage[i])
+        }
     }
-    else{
-        localStorage.setItem("ValorTotal",prt.preço)
-    }
+    carrinhohtml.innerHTML = ''
 
+    for(let i=0; i < cartitens.length; i++){
 
+        carrinhohtml.innerHTML +=  `
+        <div  class="produto">
 
-}
-
-// ---------------------------- Montar produtos no carrinho ----------------------------
-function montarcarrinho(){
-    let itenscarrinho = localStorage.getItem('Produtos no Carrinho')
-    itenscarrinho = JSON.parse(itenscarrinho)
-
-
-    carrinhohtml = document.querySelector('.blockcarrinhoprodutos')  
-    divdocarrinho = document.querySelector('.blockcarrinhofilho') 
-
-    if (itenscarrinho && carrinhohtml){
-        carrinhohtml.innerHTML = ''
-        Object.values(itenscarrinho).map(item => {
-            carrinhohtml.innerHTML +=  `
-            <div class="produto">
-                <img src="../../img/Carrinho/${item.tag}.PNG">
+            <div class="deletarproduto">
+                <label>
+                    <span></span>
+                    <span></span>
+                </label>
             </div>
-            `
-        })
+
+            <div class="produtodv1">
+                <img src="../../img/Carrinho/${cartitens[i].tag}.PNG">
+            </div>
+        
+            <div class="produtodv2">
+                <h4>${cartitens[i].nome}</h4>
+                <p>Valor: R$ ${cartitens[i].preço}</p>
+                <p>teste: ${i}  </p>
+            </div>
+        </div>
+        ` 
     }
+
+    selecionabotãodeletar()
+    cartitens = []
 }
 
-montarcarrinho()
+atualizar()
+
+// ------------------ Deleta item do carrinho ------------------
+
+function selecionabotãodeletar(){
+
+    let botaodeletar = document.querySelectorAll('.deletarproduto')
+    let divprodutonocarrinho = document.querySelectorAll('.produto')
+    let itemnocarrinho = localStorage.getItem('carrinhoitens')
+    itemnocarrinho = JSON.parse(itemnocarrinho)
+  
+    console.log(itemnocarrinho)
+    for (let i=0; i < botaodeletar.length ; i++){
+        botaodeletar[i].addEventListener('click', () => { 
+            
+            localStorage.removeItem('carrinhoitens')
+            itemnocarrinho.splice(i,1)  
+            console.log(itemnocarrinho)
+
+            localStorage.setItem('carrinhoitens',JSON.stringify(itemnocarrinho))
+            atualizar()
+        })       
+    }
+    
+    
+   
+
+    
+    console.log(cartitens)
+}

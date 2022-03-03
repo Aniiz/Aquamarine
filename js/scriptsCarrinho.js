@@ -1,5 +1,5 @@
 // ---------------------------- produtos + infos ----------------------------
-let produtos = [
+const produtos = [
     {
         nome:'Azimut Grande S10',
         tag:'AzimutS10',
@@ -38,79 +38,6 @@ let produtos = [
     },
 ]
 
-// ---------------------------- Ativa quando clica no botão alugar ----------------------------
-let alugar = document.querySelectorAll('.opcooesdiv2')
-const nomeproduto = document.getElementById('produto').textContent
-
-
-
-for (let i=0; i < alugar.length; i++){
-    alugar[i].addEventListener('click', () => {
-        numerocarrinho(produtos[conta(produtos, nomeproduto)])
-        custotal(produtos[conta(produtos, nomeproduto)])
-        
-    })
-}
-
-
-// ---------------------------- Conta o numero de itens no carrinho ----------------------------
-function numerocarrinho(prt){
-    let numeroprodutos = localStorage.getItem('numerocarrinho')
-
-    numeroprodutos = parseInt(numeroprodutos)
-
-    if( numeroprodutos){
-        localStorage.setItem('numerocarrinho', numeroprodutos + 1)
-        document.querySelector('.nmrcarrinho span').textContent = numeroprodutos + 1
-    } else{
-        localStorage.setItem('numerocarrinho', 1)
-        document.querySelector('.nmrcarrinho span').textContent = 1
-    }
-
-    additem(prt)
-
-}
-
-// -------------------------- Verifica o index do produto apartir do nome --------------------------
-function conta(obj, val){
-    i = 0
-    for(item in obj){
-        for(var chave in obj[i]) {
-            if(String(obj[i][chave]) === val) {
-                return i;
-            }
-        }
-        i ++
-    }
-}
-
-// ----------------------- Verificar se o item está no local storage e o add -----------------------
-function additem(prt){
-    let itemcarrinho = localStorage.getItem('Produtos no Carrinho')
-    let qtid = localStorage.getItem('numerocarrinho')
-    itemcarrinho = JSON.parse(itemcarrinho)
-
-    if( itemcarrinho != null){
-
-        if(itemcarrinho[prt.tag] == undefined){
-            itemcarrinho = {
-                ...itemcarrinho,
-                [qtid] : prt
-            }
-
-        }
-        itemcarrinho[qtid].nocarrinho += 1
-    }
-    else{
-    
-        prt.nocarrinho = 1
-        itemcarrinho = {
-            [qtid]: prt
-        }
-    }
-
-    localStorage.setItem('Produtos no Carrinho', JSON.stringify(itemcarrinho))
-}
 
 
 // ---------------------------- Abrir opções de alugel ----------------------------
@@ -130,3 +57,67 @@ function esconde(){
 function aparece(){
     fundocinza.style.display = 'flex';
 }
+
+ // ---------------------------- add item no carrinho ----------------------------
+ function additemcarrinho(){
+    let carrinhohtml = document.querySelector('.blockcarrinhoprodutos')
+    let valortotalhtml = document.querySelector('.valortotal')
+    let nomeproduto = document.getElementById('produto').textContent
+
+    if( cartitens.length === 0){
+        let itenslocalstorage = localStorage.getItem('carrinhoitens')
+        itenslocalstorage = JSON.parse(itenslocalstorage)
+        for(i in itenslocalstorage){
+            cartitens.push(itenslocalstorage[i])
+        }
+    }
+
+    carrinhohtml.innerHTML = ''
+    prt = produtos[conta(produtos, nomeproduto)]
+    cartitens.push(prt)
+    for(let i=0; i < cartitens.length; i++){
+        carrinhohtml.innerHTML +=  `
+        <div  class="produto">
+
+            <div class="deletarproduto">
+                <label>
+                    <span></span>
+                    <span></span>
+                </label>
+            </div>
+
+            <div class="produtodv1">
+                <img src="../../img/Carrinho/${cartitens[i].tag}.PNG">
+            </div>
+        
+            <div class="produtodv2">
+                <h4>${cartitens[i].nome}</h4>
+                <p>Valor: R$ ${cartitens[i].preço}</p>
+                <p>teste: ${cartitens[i].nocarrinho}  </p>
+            </div>
+        </div>
+        ` 
+    }
+    selecionabotãodeletar()
+    localStorage.setItem('carrinhoitens',JSON.stringify(cartitens))
+    cartitens = []
+}
+
+const confirmaropcoes = document.querySelector('.opcooesdiv2')
+
+confirmaropcoes.addEventListener('click' , additemcarrinho)
+
+ //------------- Pega o nome do produto apartir da pagina e verifica seu index na lista -------------
+
+function conta(obj, val){
+    i = 0
+    for(item in obj){
+        for(var chave in obj[i]) {
+            if(String(obj[i][chave]) === val) {
+                return i;
+            }
+        }
+        i ++
+    }
+}
+
