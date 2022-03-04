@@ -38,6 +38,8 @@ var cartitens = []
 
 function atualizar(){
     let carrinhohtml = document.querySelector('.blockcarrinhoprodutos')
+    let valortoal = document.querySelector('.valortotalexibir')
+    let somavalor = 0
 
     if( cartitens.length === 0){
         itenslocalstorage = localStorage.getItem('carrinhoitens')
@@ -49,6 +51,8 @@ function atualizar(){
     carrinhohtml.innerHTML = ''
 
     for(let i=0; i < cartitens.length; i++){
+        
+        somavalor += cartitens[i].preço
 
         carrinhohtml.innerHTML +=  `
         <div  class="produto">
@@ -66,12 +70,16 @@ function atualizar(){
         
             <div class="produtodv2">
                 <h4>${cartitens[i].nome}</h4>
-                <p>Valor: R$ ${cartitens[i].preço}</p>
-                <p>teste: ${i}  </p>
+                <p>Data de inicio: ${i}  </p>
+                <p>Data de delovução: ${i}  </p>
+                <p>Quantidade de dias: ${i}  </p>
+                <p>Valor do aluguel: R$ ${cartitens[i].preço}</p>
             </div>
         </div>
         ` 
     }
+    valortoal.innerHTML = ''
+    valortoal.innerHTML +=  `<h4> Valor Total: R$ ${somavalor} </h4>`
 
     selecionabotãodeletar()
     cartitens = []

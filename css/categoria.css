@@ -304,8 +304,129 @@
 /*-----------------------------------------------------------------------------------------------------------
    Estilo Part 4   */
 
+.sec4{
+    margin-top: 150px;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
 .sec4 h1{
     font-size: 60px;
     text-align: center;
-    color: rgb(249, 72, 155);
+    color: #99f2e5ff;
+}
+
+
+
+
+
+
+
+
+.sec4div1{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:right;
+    padding-right: 50px;
+    margin-top: 150px;
+}
+
+.chefes1{
+    max-width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+    border-bottom: rgb(230, 73, 146) 3px solid;
+    border-right: rgb(230, 73, 146) 3px solid;
+}
+
+.chefes1 h2{
+    font-size: 40px; 
+    margin-bottom: 20px;
+    color: rgb(230, 73, 146);
+}
+
+.chefes1 p{
+    color: rgb(131, 131, 131);
+    font-size: 20px; 
+    width: 80%;
+}
+
+
+
+
+
+
+
+
+.sec4div2{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    padding-left: 50px;
+    margin-top: 150px;
+}
+
+.acessorios1{
+    max-width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+    border-bottom: rgb(73, 154, 230) 3px solid;
+    border-left: rgb(73, 154, 230) 3px solid;
+}
+
+.acessorios1 h2{
+    font-size: 40px; 
+    margin-bottom: 20px;
+    color: rgb(73, 154, 230);
+}
+
+.acessorios1 p{
+    color: rgb(131, 131, 131);
+    font-size: 20px; 
+    width: 80%;
+}
+
+
+
+
+
+
+.sec4div3{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:right;
+    padding-right: 50px;
+    margin-top: 150px;
+}
+
+.pilotos1{
+    max-width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+    border-bottom: rgb(241, 199, 11) 3px solid;
+    border-right: rgb(241, 199, 11) 3px solid;
+}
+
+.pilotos1 h2{
+    font-size: 40px; 
+    margin-bottom: 20px;
+    color: rgb(241, 199, 11);
+}
+
+.pilotos1 p{
+    color: rgb(131, 131, 131);
+    font-size: 20px; 
+    width: 80%;
 }
