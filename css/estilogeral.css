@@ -397,33 +397,49 @@ label span:nth-child(3){
 
 body::-webkit-scrollbar {
     width: 8px;               /* width of the entire scrollbar */
-  }
-  
-  body::-webkit-scrollbar-track {
+}
+
+    body::-webkit-scrollbar-track {
     background: rgb(41, 41, 41);        /* color of the tracking area */
-  }
-  
-  body::-webkit-scrollbar-thumb {
+}
+
+body::-webkit-scrollbar-thumb {
     background-color: rgb(136, 136, 136);    /* color of the scroll thumb */
     border-radius: 20px;       /* roundness of the scroll thumb */
     border: 2px solid rgb(41, 41, 41);  /* creates padding around scroll thumb */
-  }
+}
 
 
 
 
 .blockcarrinhofilho::-webkit-scrollbar {
-width: 8px;               /* width of the entire scrollbar */
+    width: 8px;               /* width of the entire scrollbar */
 }
 
 .blockcarrinhofilho::-webkit-scrollbar-track {
-background: rgb(255, 255, 255);        /* color of the tracking area */
+    background: rgb(255, 255, 255);        /* color of the tracking area */
 }
 
 .blockcarrinhofilho::-webkit-scrollbar-thumb {
-background-color: rgb(136, 136, 136);    /* color of the scroll thumb */
-border-radius: 20px;       /* roundness of the scroll thumb */
-border: 2px solid rgb(255, 255, 255);  /* creates padding around scroll thumb */
+    background-color: rgb(136, 136, 136);    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 2px solid rgb(255, 255, 255);  /* creates padding around scroll thumb */
+}
+
+
+
+.blockopbranco::-webkit-scrollbar {
+    width: 8px;               /* width of the entire scrollbar */
+}
+
+.blockopbranco::-webkit-scrollbar-track {
+    background: rgb(255, 255, 255);        /* color of the tracking area */
+}
+
+.blockopbranco::-webkit-scrollbar-thumb {
+    background-color: rgb(136, 136, 136);    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 2px solid rgb(255, 255, 255);  /* creates padding around scroll thumb */
 }
 
 /* -----------   firefox n tenho :(   -----------*/

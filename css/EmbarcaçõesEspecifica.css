@@ -147,7 +147,6 @@
     display: none;
     flex-wrap: wrap;
     justify-content: center;
-
 }
 
 .blockopbranco{
@@ -158,7 +157,9 @@
     position: relative;
     margin-top: auto;
     margin-bottom: auto;
-    
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
 }
 
 #fecharopcoes{
@@ -196,16 +197,71 @@
 
 .opcooesdiv1{
     position: relative;
-    height: 90%;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.opcooesdiv1 h2{
+    width: 80%;
+    text-align: center;
+    font-size: 30px;
+    color:rgb(128, 128, 128);
+    border-bottom: solid 2px;
+    margin-left: auto;
+    margin-right: auto;
+    user-select: none;
+    margin-top: 15px;
+}
+
+.imputs{
+    position: relative;
+    margin-top: 5px;
+    margin-left: 10%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.imputs p{
+    color:rgb(128, 128, 128);
+    margin-top: 20px;
+    width: 100%;
+    font-size: 20px;
+    user-select: none;
+}
+
+.imputs input{
+    color:rgb(128, 128, 128);
+    background-color: rgba(255, 0, 0, 0);
+    margin-left: 20px;
+    border: solid rgb(128, 128, 128);
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.subtotalmenuopc{
+    color:rgb(128, 128, 128);
+    width: 100%;
+    position: relative;
+    margin-top: 30px;
+    font-size: 30px;
+    padding-left: 17%; 
+}
+
+#DatasInvalidas{
+    margin-top: 5px;
+    text-align: center;
+    color: red;
+    user-select: none;
 }
 
 .opcooesdiv2{
     position: relative;
-    height: 10%;
-    width: 150px;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
     user-select: none;
+    bottom: 0px;
+    margin-top: auto;
+    margin-bottom: 10px;
 }
 
 .opcooesdiv2 p{
@@ -213,6 +269,18 @@
     background-color:  #67E0F5;
     border-radius: 5px;
     cursor: pointer;
-    padding: 10px;
     text-align: center;
+    height: 100%;
+    width: 20%;
+    margin: auto;
+    padding: 10px;
+    position: relative;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator::after {
+    cursor: pointer;
 }

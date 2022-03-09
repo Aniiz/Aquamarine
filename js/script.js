@@ -36,11 +36,12 @@ function aparecer(){
 
 var cartitens = []
 
+
 function atualizar(){
     let carrinhohtml = document.querySelector('.blockcarrinhoprodutos')
-    let valortoal = document.querySelector('.valortotalexibir')
+    let valortotal = document.querySelector('.valortotalexibir')
     let somavalor = 0
-
+    
     if( cartitens.length === 0){
         itenslocalstorage = localStorage.getItem('carrinhoitens')
         itenslocalstorage = JSON.parse(itenslocalstorage)
@@ -70,16 +71,20 @@ function atualizar(){
         
             <div class="produtodv2">
                 <h4>${cartitens[i].nome}</h4>
-                <p>Data de inicio: ${i}  </p>
-                <p>Data de delovução: ${i}  </p>
-                <p>Quantidade de dias: ${i}  </p>
+                <p>Data primeiro dia: ${cartitens[i].datainicial}  </p>
+                <p>data ultimo dia: ${cartitens[i].datafinal}  </p>
+                <p>Quantidade de dias: ${cartitens[i].dias}  </p>
                 <p>Valor do aluguel: R$ ${cartitens[i].preço}</p>
             </div>
         </div>
         ` 
     }
-    valortoal.innerHTML = ''
-    valortoal.innerHTML +=  `<h4> Valor Total: R$ ${somavalor} </h4>`
+
+    
+    console.log(valortotal)
+    
+    valortotal.innerHTML = ''
+    valortotal.innerHTML +=  `<h4> Valor Total: R$ ${somavalor} </h4>`
 
     selecionabotãodeletar()
     cartitens = []
@@ -100,8 +105,7 @@ function selecionabotãodeletar(){
         botaodeletar[i].addEventListener('click', () => { 
             
             localStorage.removeItem('carrinhoitens')
-            itemnocarrinho.splice(i,1)  
-            console.log(itemnocarrinho)
+            itemnocarrinho.splice(i,1)
 
             localStorage.setItem('carrinhoitens',JSON.stringify(itemnocarrinho))
             atualizar()

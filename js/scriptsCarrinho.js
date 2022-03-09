@@ -3,37 +3,38 @@ const produtos = [
     {
         nome:'Azimut Grande S10',
         tag:'AzimutS10',
-        preço: 100,
-        nocarrinho: 0 
+        preço: 650,
+        nocarrinho: 0
+
     },
     {
         nome:'Azimut S7',
         tag:'AzimutS7',
-        preço: 100,
+        preço: 600,
         nocarrinho: 0 
     },
     {
         nome:'JET SKI ULTRA 310X',
         tag:'JTultra310x',
-        preço: 100,
+        preço: 400,
         nocarrinho: 0 
     },
     {
         nome:'JET SKI ULTRA 310LX-S',
         tag:'JTultra310lxs',
-        preço: 100,
+        preço: 420,
         nocarrinho: 0 
     },
     {
         nome:'Lagoon 46',
         tag:'Lagoon46',
-        preço: 100,
+        preço: 350,
         nocarrinho: 0 
     },
     {
         nome:'Nautitech 46 Open',
         tag:'Lagoon46open',
-        preço: 100,
+        preço: 370,
         nocarrinho: 0 
     },
 ]
@@ -52,55 +53,74 @@ iniciaralugar.addEventListener('click', aparece)
 
 function esconde(){
     fundocinza.style.display = 'none';
+    corpo.style.overflow = 'auto';
+    deletemensage()
 }
 
 function aparece(){
     fundocinza.style.display = 'flex';
+    corpo.style.overflow = 'hidden';
+    checkclick()
 }
 
  // ---------------------------- add item no carrinho ----------------------------
  function additemcarrinho(){
-    let carrinhohtml = document.querySelector('.blockcarrinhoprodutos')
-    let valortotalhtml = document.querySelector('.valortotal')
-    let nomeproduto = document.getElementById('produto').textContent
-
-    if( cartitens.length === 0){
-        let itenslocalstorage = localStorage.getItem('carrinhoitens')
-        itenslocalstorage = JSON.parse(itenslocalstorage)
-        for(i in itenslocalstorage){
-            cartitens.push(itenslocalstorage[i])
-        }
-    }
-
-    carrinhohtml.innerHTML = ''
-    prt = produtos[conta(produtos, nomeproduto)]
-    cartitens.push(prt)
-    for(let i=0; i < cartitens.length; i++){
-        carrinhohtml.innerHTML +=  `
-        <div  class="produto">
-
-            <div class="deletarproduto">
-                <label>
-                    <span></span>
-                    <span></span>
-                </label>
-            </div>
-
-            <div class="produtodv1">
-                <img src="../../img/Carrinho/${cartitens[i].tag}.PNG">
-            </div>
         
-            <div class="produtodv2">
-                <h4>${cartitens[i].nome}</h4>
-                <p>Valor: R$ ${cartitens[i].preço}</p>
-                <p>teste: ${cartitens[i].nocarrinho}  </p>
-            </div>
-        </div>
-        ` 
+    if(getvalueinput() != true){
+        let carrinhohtml = document.querySelector('.blockcarrinhoprodutos')
+        let nomeproduto = document.getElementById('produto').textContent
+        let prt = produtos[conta(produtos, nomeproduto)]
+
+        let molde = [
+            {
+                nome:'',
+                tag:'',
+                preço: 0,
+                datainicial: 0,
+                datafinal: 0,
+                dias: 0,
+                pontos:0
+            },
+        ]
+
+
+        if( cartitens.length === 0){
+            let itenslocalstorage = localStorage.getItem('carrinhoitens')
+            itenslocalstorage = JSON.parse(itenslocalstorage)
+            for(i in itenslocalstorage){
+                cartitens.push(itenslocalstorage[i])
+            }
+        }
+
+        console.log(difDias())
+
+        valorsubtotal = checkclick() 
+        datainicio =  getinicialdate()
+        datafinalizado = getfinaldate()
+        diasdealuguel = difDias()
+        
+        carrinhohtml.innerHTML = ''
+        
+        // Passa valores do aluguel para a lista molde
+
+        molde[0].nome = `${prt.nome}`
+        molde[0].tag = `${prt.tag}`
+        molde[0].preço = valorsubtotal
+        molde[0].datainicial = datainicio
+        molde[0].datafinal = datafinalizado
+        molde[0].dias = diasdealuguel
+        molde[0].pontos = valorsubtotal/10
+
+
+
+        cartitens.push(molde[0])
+
+        selecionabotãodeletar()
+        localStorage.setItem('carrinhoitens',JSON.stringify(cartitens))
+        cartitens = []
+        esconde()
+        resetcheck()
     }
-    selecionabotãodeletar()
-    localStorage.setItem('carrinhoitens',JSON.stringify(cartitens))
-    cartitens = []
 }
 
 const confirmaropcoes = document.querySelector('.opcooesdiv2')
@@ -138,8 +158,6 @@ for (let i=0; i < foto.length ; i++){
 
         
         endereço = foto[i].children[0].getAttribute('src')
-        console.log(endereço)
-        console.log(endereço)
         divdaimg.innerHTML = ` <img src="${endereço}" alt="">
         ` 
         
@@ -157,4 +175,181 @@ for (let i=0; i < foto.length ; i++){
         }
     })     
     
+}
+
+// Insere o nome da embarcação no menu de opções de aluguel
+
+document.getElementById('nomedoproduto').textContent = document.getElementById('produto').textContent
+
+
+// verificar se as datas estão em branco, se sim, impedem do item ser add ao carrinho
+
+function getvalueinput(){
+
+    let datainicio = document.getElementById('datainicio')
+    let datafinal = document.getElementById('datafinal')
+    let divdatas = document.getElementById('DatasInvalidas')
+
+
+    if(fundocinza.style.display == 'flex'){
+        if(isNaN(datainicio.value) == '' || isNaN(datafinal.value) =='' ){
+            divdatas.textContent = 'Obrigatório o preenchimento das datas.'
+            return true;
+        }
+    }
+
+}
+
+// Apaga a mensagem de obrigatoriedade das datas
+
+function deletemensage(){
+    let divdatas = document.getElementById('DatasInvalidas')
+    let datainicio = document.getElementById('datainicio')
+    let datafinal = document.getElementById('datafinal')
+
+    divdatas.textContent = ''
+    datafinal.value = ''
+    datainicio.value = ''
+}
+
+
+// Click event for check-box and values for this
+
+function checkclick(){
+
+    let botaocheck = document.querySelectorAll('.opcoescheck')
+    let valorzinho = 0
+
+    valorzinho = 0
+
+    for (let i=0; i < botaocheck.length ; i++){
+
+        if(botaocheck[i].checked){
+
+            if(i == 0){
+                valorzinho += 300
+            }
+            if(i == 1){
+                valorzinho += 126
+            }
+            if(i == 2){
+                valorzinho += 150
+            }
+            if(i == 3){
+                valorzinho += 332
+            }
+            if(i == 4){
+                valorzinho += 275
+            }
+
+        }
+
+        subtotal(valorzinho)
+    }
+    
+    for (let i=0; i < botaocheck.length ; i++){
+        botaocheck[i].addEventListener('click', () => { 
+            
+            if(botaocheck[i].checked){
+
+                if(i == 0){
+                    valorzinho += 300
+                }
+                if(i == 1){
+                    valorzinho += 126
+                }
+                if(i == 2){
+                    valorzinho += 150
+                }
+                if(i == 3){
+                    valorzinho += 332
+                }
+                if(i == 4){
+                    valorzinho += 275
+                }
+
+            }else{
+
+                if(i == 0){
+                    valorzinho -= 300
+                }
+                if(i == 1){
+                    valorzinho -= 126
+                }
+                if(i == 2){
+                    valorzinho -= 150
+                }
+                if(i == 3){
+                    valorzinho -= 332
+                }
+                if(i == 4){
+                    valorzinho -= 275
+                }
+
+            }
+            subtotal(valorzinho)
+        })       
+    }
+    return subtotal(valorzinho)
+    
+}
+
+
+// Insere o Subtotal no menu de opções de aluguel
+
+function subtotal(valor){
+    let subtotalhtml = document.getElementById('subtotalmenuopc')
+    let nomeproduto = document.getElementById('produto')
+    let valordoproduto = produtos[conta(produtos, nomeproduto.textContent)].preço
+    
+    
+    
+    subtotalhtml.textContent = `Subtotal: R$ ${valordoproduto + valor} `
+    valorretorno = valordoproduto + valor
+
+    return (valorretorno)
+}
+
+// reseta os check box
+
+function resetcheck(){
+    let botaocheck = document.querySelectorAll('.opcoescheck')
+
+    for (let i=0; i < botaocheck.length ; i++){
+        if(botaocheck[i].checked){
+            botaocheck[i].checked = false;
+        }
+    }
+}
+
+
+// Get na data inicial
+
+function getinicialdate(){
+    let datainicio = document.getElementById('datainicio').value
+
+    return datainicio
+}
+
+
+// Get na data final
+
+function getfinaldate(){
+    let datafinal = document.getElementById('datafinal').value
+
+    return datafinal
+}
+
+// aaaaaa
+
+function difDias(){
+    let datainicio = document.getElementById('datainicio').value
+    let datafinal = document.getElementById('datafinal').value
+    
+    datainicio = new Date(datainicio)
+    datafinal = new Date(datafinal)
+
+    console.log(datafinal) 
+
+    return parseInt( (datafinal - datainicio) / (24 * 3600 * 1000) + 1 );
 }
