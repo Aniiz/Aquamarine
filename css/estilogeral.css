@@ -168,6 +168,9 @@ label span:nth-child(3){
     display: block;
 }
 
+#Autenticar{
+    cursor: pointer;
+}
 
 
 /*-----------------------------   Estilo do conteúdo     ------------------------------------- */
@@ -322,6 +325,27 @@ label span:nth-child(3){
     margin: auto;
 }
 
+.valortotalexibir div{
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+
+    user-select: none;
+}
+
+.valortotalexibir p{
+    padding: 10px;
+    color:rgb(94, 94, 94);
+}
+
+.valortotalexibir a{
+    color: white;
+    background-color: #67E0F5;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
 .deletarproduto{
     position: absolute;
     width: 25px;
@@ -395,51 +419,298 @@ label span:nth-child(3){
 
 /* -----------   chrome   -----------*/
 
-body::-webkit-scrollbar {
+*::-webkit-scrollbar {
     width: 8px;               /* width of the entire scrollbar */
 }
 
-    body::-webkit-scrollbar-track {
-    background: rgb(41, 41, 41);        /* color of the tracking area */
-}
-
-body::-webkit-scrollbar-thumb {
-    background-color: rgb(136, 136, 136);    /* color of the scroll thumb */
-    border-radius: 20px;       /* roundness of the scroll thumb */
-    border: 2px solid rgb(41, 41, 41);  /* creates padding around scroll thumb */
-}
-
-
-
-
-.blockcarrinhofilho::-webkit-scrollbar {
-    width: 8px;               /* width of the entire scrollbar */
-}
-
-.blockcarrinhofilho::-webkit-scrollbar-track {
+*::-webkit-scrollbar-track {
     background: rgb(255, 255, 255);        /* color of the tracking area */
 }
 
-.blockcarrinhofilho::-webkit-scrollbar-thumb {
-    background-color: rgb(136, 136, 136);    /* color of the scroll thumb */
-    border-radius: 20px;       /* roundness of the scroll thumb */
-    border: 2px solid rgb(255, 255, 255);  /* creates padding around scroll thumb */
-}
-
-
-
-.blockopbranco::-webkit-scrollbar {
-    width: 8px;               /* width of the entire scrollbar */
-}
-
-.blockopbranco::-webkit-scrollbar-track {
-    background: rgb(255, 255, 255);        /* color of the tracking area */
-}
-
-.blockopbranco::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
     background-color: rgb(136, 136, 136);    /* color of the scroll thumb */
     border-radius: 20px;       /* roundness of the scroll thumb */
     border: 2px solid rgb(255, 255, 255);  /* creates padding around scroll thumb */
 }
 
 /* -----------   firefox n tenho :(   -----------*/
+
+
+
+
+/* -----------  Estilo de autenticar, bora ?   -----------*/
+
+.blockautt{
+    background-color: rgba(0, 0, 0, 0.274);
+    background-repeat: no-repeat, repeat;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 4;
+    flex-wrap: wrap;
+    justify-content: center;
+    display: none;
+    user-select: none;
+}
+
+.blocoauttfilho{
+    height: 90vh;
+    width: 60vw;
+    border-radius: 6px;
+    background-color: white;
+    position: relative;
+    margin-top: auto;
+    margin-bottom: auto;
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 35px;
+    padding-right: 35px;
+}
+
+.login{
+    padding-top: 20px;
+    height: 90%;
+    position: relative;
+    margin: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 20px;
+}
+
+.cadast{
+    padding-top: 20px;
+    height: 90%;
+    position: relative;
+    margin: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 20px;
+}
+
+.fecharopcoes3{
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: 0px;
+    margin: 15px;
+    cursor: pointer;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    z-index: 5;
+}
+
+.fecharopcoes3 label span{
+    position: relative;
+    height: 5px;
+    width: 100%;
+    border-radius: 30px;
+    background-color: #67E0F5;
+    transition: 0.25s ease-in-out;
+}
+
+.fecharopcoes3 label span:nth-child(1){
+    top: 9px;
+    position: relative;
+    transform: rotate(-45deg);
+}
+.fecharopcoes3 label span:nth-child(2){
+    top: 4px;
+    position: relative;
+    transform: rotate(45deg);
+}
+
+
+
+.cadastfilho{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cadastfilho h3{
+    font-size: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+    color:rgb(80, 80, 80);
+    border-bottom: solid 1px;
+}
+
+.cadastfilho p{
+    font-size: 20px;
+    color:rgb(80, 80, 80);
+}
+
+.cadastfilho input{
+    font-size: 20px;
+    margin-bottom: 10px;
+    border: solid 1px;
+    border-radius: 4px;
+    color: rgb(80, 80, 80);
+}
+
+
+
+
+.loginfilho{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.loginfilho h3{
+    font-size: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+    border-bottom: solid 1px;
+    color:rgb(80, 80, 80);  
+}
+
+.loginfilho p{
+    font-size: 20px;
+    color:rgb(80, 80, 80);
+}
+
+.loginfilho input{
+    font-size: 20px;
+    margin-bottom: 10px;
+    border: solid 1px;
+    border-radius: 4px;
+    color: rgb(80, 80, 80);
+}
+
+#logar{
+    cursor: pointer;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+#logar p{
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #67E0F5;
+    padding: 10px;
+    border-radius: 10%;
+    color: white;
+}
+
+#cadastrar{
+    cursor: pointer;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+#cadastrar p{
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #67E0F5;
+    padding: 10px;
+    border-radius: 10%;
+    color: white;
+}
+
+/* -----------  Estilo Perfil -----------*/
+
+
+
+.blocoperfil{
+    background-color: rgba(0, 0, 0, 0.274);
+    background-repeat: no-repeat, repeat;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 4;
+    flex-wrap: wrap;
+    justify-content: center;
+    display: none;
+    user-select: none;
+}
+
+.blocoperfilfilho{
+    height: 90vh;
+    width: 60vw;
+    border-radius: 6px;
+    background-color: white;
+    position: relative;
+    margin-top: auto;
+    margin-bottom: auto;
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 35px;
+    padding-right: 35px;
+    overflow-y: auto;
+}
+
+
+
+
+.fecharopcoes4{
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: 0px;
+    margin: 15px;
+    cursor: pointer;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    z-index: 5;
+}
+
+.fecharopcoes4 label span{
+    position: relative;
+    height: 5px;
+    width: 100%;
+    border-radius: 30px;
+    background-color: #67E0F5;
+    transition: 0.25s ease-in-out;
+}
+
+.fecharopcoes4 label span:nth-child(1){
+    top: 9px;
+    position: relative;
+    transform: rotate(-45deg);
+}
+.fecharopcoes4 label span:nth-child(2){
+    top: 4px;
+    position: relative;
+    transform: rotate(45deg);
+}
+
+
+.infousuário{
+    width: 100%;
+    margin-top: 40px;
+}
+
+.infousuário h3{
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 25px;
+    color: rgb(80, 80, 80);
+    border-bottom: 1px solid;
+}
+
+.infousuário p{
+    color: rgb(80, 80, 80);
+    font-size: 17px;
+    line-height: 1.5;
+}
+
+.deslogar{
+    position: relative;
+    bottom: 0px;
+    margin-bottom: 50px;
+    max-height: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#deslogar{
+    height: 100%;
+    cursor: pointer;
+    background-color: #67E0F5;
+    position: relative;
+    padding: 7px;
+    border-radius: 5px;
+}

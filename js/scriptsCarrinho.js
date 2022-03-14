@@ -92,24 +92,22 @@ function aparece(){
             }
         }
 
-        console.log(difDias())
 
         valorsubtotal = checkclick() 
         datainicio =  getinicialdate()
         datafinalizado = getfinaldate()
         diasdealuguel = difDias()
         
-        carrinhohtml.innerHTML = ''
         
         // Passa valores do aluguel para a lista molde
 
         molde[0].nome = `${prt.nome}`
         molde[0].tag = `${prt.tag}`
-        molde[0].preço = valorsubtotal
+        molde[0].preço = valorsubtotal * diasdealuguel
         molde[0].datainicial = datainicio
         molde[0].datafinal = datafinalizado
         molde[0].dias = diasdealuguel
-        molde[0].pontos = valorsubtotal/10
+        molde[0].pontos =(valorsubtotal * diasdealuguel)/10
 
 
 
@@ -222,6 +220,7 @@ function checkclick(){
 
     valorzinho = 0
 
+
     for (let i=0; i < botaocheck.length ; i++){
 
         if(botaocheck[i].checked){
@@ -301,11 +300,13 @@ function subtotal(valor){
     let subtotalhtml = document.getElementById('subtotalmenuopc')
     let nomeproduto = document.getElementById('produto')
     let valordoproduto = produtos[conta(produtos, nomeproduto.textContent)].preço
+    let dias = difDias()
     
     
+    subtotalhtml.textContent = `Diária: R$ ${valordoproduto + valor} `
+    valorretorno = (valordoproduto + valor)
     
-    subtotalhtml.textContent = `Subtotal: R$ ${valordoproduto + valor} `
-    valorretorno = valordoproduto + valor
+
 
     return (valorretorno)
 }
@@ -327,6 +328,8 @@ function resetcheck(){
 
 function getinicialdate(){
     let datainicio = document.getElementById('datainicio').value
+    datainicio = new Date(datainicio)
+    datainicio = datainicio.toLocaleDateString('pt-BR')
 
     return datainicio
 }
@@ -336,11 +339,13 @@ function getinicialdate(){
 
 function getfinaldate(){
     let datafinal = document.getElementById('datafinal').value
+    datafinal = new Date(datafinal)
+    datafinal = datafinal.toLocaleDateString('pt-BR')
 
     return datafinal
 }
 
-// aaaaaa
+// Calcula os dias de aluguel
 
 function difDias(){
     let datainicio = document.getElementById('datainicio').value
@@ -349,7 +354,6 @@ function difDias(){
     datainicio = new Date(datainicio)
     datafinal = new Date(datafinal)
 
-    console.log(datafinal) 
-
     return parseInt( (datafinal - datainicio) / (24 * 3600 * 1000) + 1 );
 }
+

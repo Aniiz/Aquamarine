@@ -38,6 +38,7 @@ var cartitens = []
 
 
 function atualizar(){
+
     let carrinhohtml = document.querySelector('.blockcarrinhoprodutos')
     let valortotal = document.querySelector('.valortotalexibir')
     let somavalor = 0
@@ -71,8 +72,8 @@ function atualizar(){
         
             <div class="produtodv2">
                 <h4>${cartitens[i].nome}</h4>
-                <p>Data primeiro dia: ${cartitens[i].datainicial}  </p>
-                <p>data ultimo dia: ${cartitens[i].datafinal}  </p>
+                <p>Retirada: ${cartitens[i].datainicial}  </p>
+                <p>Devolução: ${cartitens[i].datafinal}  </p>
                 <p>Quantidade de dias: ${cartitens[i].dias}  </p>
                 <p>Valor do aluguel: R$ ${cartitens[i].preço}</p>
             </div>
@@ -81,16 +82,25 @@ function atualizar(){
     }
 
     
-    console.log(valortotal)
-    
     valortotal.innerHTML = ''
-    valortotal.innerHTML +=  `<h4> Valor Total: R$ ${somavalor} </h4>`
+    valortotal.innerHTML +=  `<h4> Valor Total: R$ ${somavalor} </h4>
+        <div> 
+        <p><input id="usarpontos" type="checkbox"> Usar Pontos</p>
+            <a id="efetuarpagamento">Efetuar Pagamento</a>
+        </div>
+    `
+
+ 
+    let efPag = document.getElementById('efetuarpagamento')
+    efPag.addEventListener('click', EfetuarPagamento)
 
     selecionabotãodeletar()
     cartitens = []
+    return somavalor
 }
 
 atualizar()
+
 
 // ------------------ Deleta item do carrinho ------------------
 
@@ -112,4 +122,77 @@ function selecionabotãodeletar(){
         })       
     }
 
+}
+
+
+// Efetuar Pagamento
+
+function EfetuarPagamento(){
+
+    let divcarrinho = document.querySelector('.blockcarrinho')
+    let itenslocalstorage = JSON.parse(localStorage.getItem('carrinhoitens'))
+    let usuarioslocalstorage = JSON.parse(localStorage.getItem('usuarios'))
+    let status = verificastatus()
+    let usuariostemp = []
+    
+    if(typeof status == 'undefined'){
+        alert('Obrigatório estar logado.')
+    }
+    if(typeof status != 'true'){
+        
+        for(users in usuarioslocalstorage){
+            usuariostemp.push(usuarioslocalstorage[users])
+        }
+
+        resultado = usarpontos()
+        console.log(resultado)
+        usuariostemp[status].c_pontos = resultado[1]
+        localStorage.setItem('usuarios',JSON.stringify(usuariostemp))
+        localStorage.removeItem('carrinhoitens')
+        esconder()
+        alert(`Compra realizada com sucesso
+        Você gastou R$ ${ resultado[0]}`)
+    }
+}   
+
+// Da desconto com pontos
+
+function usarpontos(){
+    let usepontos = document.getElementById('usarpontos')
+    let status = JSON.parse(localStorage.getItem('loginstatus'))
+    let usuariologado = JSON.parse(localStorage.getItem('usuarios'))
+    let usuarios = JSON.parse(localStorage.getItem('usuarios'))
+    let itenslocalstorage = JSON.parse(localStorage.getItem('carrinhoitens'))
+    let saldo = 0
+    let valor = 0
+
+    if(status){
+        if(status[0] == true){
+             
+            usuariologado = usuariologado[status[1]].c_pontos
+        }
+    }
+
+    for(item in itenslocalstorage){
+        valor = itenslocalstorage[item].preço + valor
+    }
+
+    if(usepontos){
+        if(usepontos.checked){
+            if(valor < usuariologado){
+                saldo = valor / 2
+                usuariologado = usuariologado - saldo
+            }
+            else{
+                saldo = valor - usuariologado
+                usuariologado -= usuariologado
+            }
+        }
+        else{
+            saldo = valor
+            usuariologado = valor/10 + usuariologado
+        }
+    }
+
+    return [saldo,usuariologado]
 }
