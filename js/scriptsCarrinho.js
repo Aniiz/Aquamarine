@@ -188,7 +188,6 @@ function getvalueinput(){
     let datafinal = document.getElementById('datafinal')
     let divdatas = document.getElementById('DatasInvalidas')
 
-
     if(fundocinza.style.display == 'flex'){
         if(isNaN(datainicio.value) == '' || isNaN(datafinal.value) =='' ){
             divdatas.textContent = 'Obrigatório o preenchimento das datas.'
@@ -328,20 +327,27 @@ function resetcheck(){
 
 function getinicialdate(){
     let datainicio = document.getElementById('datainicio').value
-    datainicio = new Date(datainicio)
-    datainicio = datainicio.toLocaleDateString('pt-BR')
+    
+    let dia  = datainicio.split("-")[0];
+    let mes  = datainicio.split("-")[1];
+    let ano  = datainicio.split("-")[2];
+
+    datainicio = ano + '/' + ("0"+mes).slice(-2) + '/' + ("0"+dia).slice(-2);
 
     return datainicio
 }
-
 
 // Get na data final
 
 function getfinaldate(){
     let datafinal = document.getElementById('datafinal').value
-    datafinal = new Date(datafinal)
-    datafinal = datafinal.toLocaleDateString('pt-BR')
 
+    let dia  = datafinal.split("-")[0];
+    let mes  = datafinal.split("-")[1];
+    let ano  = datafinal.split("-")[2];
+
+    datafinal = ano + '/' + ("0"+mes).slice(-2) + '/' + ("0"+dia).slice(-2);
+   
     return datafinal
 }
 
@@ -356,4 +362,3 @@ function difDias(){
 
     return parseInt( (datafinal - datainicio) / (24 * 3600 * 1000) + 1 );
 }
-

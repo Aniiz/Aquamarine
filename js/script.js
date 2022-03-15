@@ -41,6 +41,7 @@ function atualizar(){
 
     let carrinhohtml = document.querySelector('.blockcarrinhoprodutos')
     let valortotal = document.querySelector('.valortotalexibir')
+    let titulo = document.getElementById('title').textContent
     let somavalor = 0
     
     if( cartitens.length === 0){
@@ -51,48 +52,129 @@ function atualizar(){
         }
     }
     carrinhohtml.innerHTML = ''
+    
+    // Src dinamico para home
 
-    for(let i=0; i < cartitens.length; i++){
-        
-        somavalor += cartitens[i].preço
+    if(titulo == 'AquaMarine - Home' ){
+    
+        for(let i=0; i < cartitens.length; i++){
+            
+            somavalor += cartitens[i].preço
 
-        carrinhohtml.innerHTML +=  `
-        <div  class="produto">
+            carrinhohtml.innerHTML +=  `
+            <div  class="produto">
 
-            <div class="deletarproduto">
-                <label>
-                    <span></span>
-                    <span></span>
-                </label>
+                <div class="deletarproduto">
+                    <label>
+                        <span></span>
+                        <span></span>
+                    </label>
+                </div>
+
+                <div class="produtodv1">
+                    <img src="./img/Carrinho/${cartitens[i].tag}.png">
+                </div>
+            
+                <div class="produtodv2">
+                    <h4>${cartitens[i].nome}</h4>
+                    <p>Retirada: ${cartitens[i].datainicial}  </p>
+                    <p>Devolução: ${cartitens[i].datafinal}  </p>
+                    <p>Quantidade de dias: ${cartitens[i].dias}  </p>
+                    <p>Valor do aluguel: R$ ${cartitens[i].preço}</p>
+                </div>
             </div>
+            ` 
+        }
+    }
+    
+    // Src dinamico para Catamarã, Jet, Iates e Categorias
 
-            <div class="produtodv1">
-                <img src="../../img/Carrinho/${cartitens[i].tag}.PNG">
+    if(titulo == 'AquaMarine - Catamarã' || titulo == 'AquaMarine - Jet Ski' 
+    || titulo == 'AquaMarine - Iates' || titulo =='AquaMarine - Categoria'){
+
+        for(let i=0; i < cartitens.length; i++){
+            
+            somavalor += cartitens[i].preço
+
+            carrinhohtml.innerHTML +=  `
+            <div  class="produto">
+
+                <div class="deletarproduto">
+                    <label>
+                        <span></span>
+                        <span></span>
+                    </label>
+                </div>
+
+                <div class="produtodv1">
+                    <img src="../img/Carrinho/${cartitens[i].tag}.png">
+                </div>
+            
+                <div class="produtodv2">
+                    <h4>${cartitens[i].nome}</h4>
+                    <p>Retirada: ${cartitens[i].datainicial}  </p>
+                    <p>Devolução: ${cartitens[i].datafinal}  </p>
+                    <p>Quantidade de dias: ${cartitens[i].dias}  </p>
+                    <p>Valor do aluguel: R$ ${cartitens[i].preço}</p>
+                </div>
             </div>
-        
-            <div class="produtodv2">
-                <h4>${cartitens[i].nome}</h4>
-                <p>Retirada: ${cartitens[i].datainicial}  </p>
-                <p>Devolução: ${cartitens[i].datafinal}  </p>
-                <p>Quantidade de dias: ${cartitens[i].dias}  </p>
-                <p>Valor do aluguel: R$ ${cartitens[i].preço}</p>
-            </div>
-        </div>
-        ` 
+            ` 
+        }
     }
 
-    
+     // Src dinamico para as embarcações especificas
+
+    if(titulo == 'AquaMarine - ULTRA 310X' || titulo == 'AquaMarine - ULTRA 310LX-S' 
+     || titulo == 'AquaMarine - Azimut Grande S10' || titulo =='AquaMarine - Azimut S7' 
+     || titulo =='AquaMarine - Nautitech 46 Open' || titulo =='AquaMarine - Lagoon 46'){
+
+        for(let i=0; i < cartitens.length; i++){
+            
+            somavalor += cartitens[i].preço
+
+            carrinhohtml.innerHTML +=  `
+            <div  class="produto">
+
+                <div class="deletarproduto">
+                    <label>
+                        <span></span>
+                        <span></span>
+                    </label>
+                </div>
+
+                <div class="produtodv1">
+                    <img src="../../img/Carrinho/${cartitens[i].tag}.png">
+                </div>
+            
+                <div class="produtodv2">
+                    <h4>${cartitens[i].nome}</h4>
+                    <p>Retirada: ${cartitens[i].datainicial}  </p>
+                    <p>Devolução: ${cartitens[i].datafinal}  </p>
+                    <p>Quantidade de dias: ${cartitens[i].dias}  </p>
+                    <p>Valor do aluguel: R$ ${cartitens[i].preço}</p>
+                </div>
+            </div>
+            ` 
+        }
+    }
+
     valortotal.innerHTML = ''
-    valortotal.innerHTML +=  `<h4> Valor Total: R$ ${somavalor} </h4>
+    valortotal.innerHTML +=  `<h4 id="valorpagamento"> Valor Total: R$ ${somavalor} </h4>
         <div> 
         <p><input id="usarpontos" type="checkbox"> Usar Pontos</p>
             <a id="efetuarpagamento">Efetuar Pagamento</a>
         </div>
     `
 
- 
+
+    // evento click no botão de pagar
     let efPag = document.getElementById('efetuarpagamento')
     efPag.addEventListener('click', EfetuarPagamento)
+
+    // Eevento click no check box de usar pontos
+    let teste = document.getElementById('usarpontos')
+
+    teste.addEventListener('click', attsubvalor)
 
     selecionabotãodeletar()
     cartitens = []
@@ -145,13 +227,10 @@ function EfetuarPagamento(){
         }
 
         resultado = usarpontos()
-        console.log(resultado)
         usuariostemp[status].c_pontos = resultado[1]
         localStorage.setItem('usuarios',JSON.stringify(usuariostemp))
         localStorage.removeItem('carrinhoitens')
         esconder()
-        alert(`Compra realizada com sucesso
-        Você gastou R$ ${ resultado[0]}`)
     }
 }   
 
@@ -169,7 +248,7 @@ function usarpontos(){
     if(status){
         if(status[0] == true){
              
-            usuariologado = usuariologado[status[1]].c_pontos
+            pontosusuarios = usuariologado[status[1]].c_pontos
         }
     }
 
@@ -179,20 +258,30 @@ function usarpontos(){
 
     if(usepontos){
         if(usepontos.checked){
-            if(valor < usuariologado){
+            if(valor/2 < pontosusuarios){
                 saldo = valor / 2
-                usuariologado = usuariologado - saldo
+                pontosusuarios = pontosusuarios - saldo
             }
             else{
-                saldo = valor - usuariologado
-                usuariologado -= usuariologado
+                saldo = valor - pontosusuarios
+                pontosusuarios -= pontosusuarios
             }
         }
         else{
             saldo = valor
-            usuariologado = valor/10 + usuariologado
+            pontosusuarios = valor/10 + pontosusuarios
         }
     }
+    pontosusuarios = Math.trunc(pontosusuarios)
 
-    return [saldo,usuariologado]
+    return [saldo,pontosusuarios]
+}
+
+// Atualiza o valor da compra conforme uso de pontos ou não
+
+function attsubvalor(){
+    let valorpagar = usarpontos()
+    let valorpagamento = document.getElementById('valorpagamento')
+    
+    valorpagamento.textContent =  `Valor Total: R$ ${valorpagar[0]}`
 }
