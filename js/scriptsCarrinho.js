@@ -125,7 +125,7 @@ const confirmaropcoes = document.querySelector('.opcooesdiv2')
 
 confirmaropcoes.addEventListener('click' , additemcarrinho)
 
- //------------- Pega o nome do produto apartir da pagina e verifica seu index na lista -------------
+//------------- Pega o nome do produto apartir da pagina e verifica seu index na lista -------------
 
 function conta(obj, val){
     i = 0
@@ -139,7 +139,7 @@ function conta(obj, val){
     }
 }
 
- //------------- Maximizar foto -------------
+//------------- Maximizar foto -------------
 
 let foto = document.getElementsByClassName('fotos')
 let divaparecer = document.getElementsByClassName('fotomax')

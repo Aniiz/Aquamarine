@@ -43,6 +43,7 @@ function atualizar(){
     let valortotal = document.querySelector('.valortotalexibir')
     let titulo = document.getElementById('title').textContent
     let somavalor = 0
+    let srcimagem = ''
     
     if( cartitens.length === 0){
         itenslocalstorage = localStorage.getItem('carrinhoitens')
@@ -54,108 +55,54 @@ function atualizar(){
     carrinhohtml.innerHTML = ''
     
     // Src dinamico para home
-
     if(titulo == 'AquaMarine - Home' ){
-    
-        for(let i=0; i < cartitens.length; i++){
-            
-            somavalor += cartitens[i].preço
-
-            carrinhohtml.innerHTML +=  `
-            <div  class="produto">
-
-                <div class="deletarproduto">
-                    <label>
-                        <span></span>
-                        <span></span>
-                    </label>
-                </div>
-
-                <div class="produtodv1">
-                    <img src="./img/Carrinho/${cartitens[i].tag}.png">
-                </div>
-            
-                <div class="produtodv2">
-                    <h4>${cartitens[i].nome}</h4>
-                    <p>Retirada: ${cartitens[i].datainicial}  </p>
-                    <p>Devolução: ${cartitens[i].datafinal}  </p>
-                    <p>Quantidade de dias: ${cartitens[i].dias}  </p>
-                    <p>Valor do aluguel: R$ ${cartitens[i].preço}</p>
-                </div>
-            </div>
-            ` 
-        }
+        srcimagem = `<img src="./img/Carrinho/${cartitens[i].tag}.png"></img>`
     }
     
     // Src dinamico para Catamarã, Jet, Iates e Categorias
 
     if(titulo == 'AquaMarine - Catamarã' || titulo == 'AquaMarine - Jet Ski' 
     || titulo == 'AquaMarine - Iates' || titulo =='AquaMarine - Categoria'){
-
-        for(let i=0; i < cartitens.length; i++){
-            
-            somavalor += cartitens[i].preço
-
-            carrinhohtml.innerHTML +=  `
-            <div  class="produto">
-
-                <div class="deletarproduto">
-                    <label>
-                        <span></span>
-                        <span></span>
-                    </label>
-                </div>
-
-                <div class="produtodv1">
-                    <img src="../img/Carrinho/${cartitens[i].tag}.png">
-                </div>
-            
-                <div class="produtodv2">
-                    <h4>${cartitens[i].nome}</h4>
-                    <p>Retirada: ${cartitens[i].datainicial}  </p>
-                    <p>Devolução: ${cartitens[i].datafinal}  </p>
-                    <p>Quantidade de dias: ${cartitens[i].dias}  </p>
-                    <p>Valor do aluguel: R$ ${cartitens[i].preço}</p>
-                </div>
-            </div>
-            ` 
-        }
+        srcimagem = `<img src="../img/Carrinho/${cartitens[i].tag}.png"></img>`
     }
 
-     // Src dinamico para as embarcações especificas
+    // Src dinamico para as embarcações especificas
 
     if(titulo == 'AquaMarine - ULTRA 310X' || titulo == 'AquaMarine - ULTRA 310LX-S' 
      || titulo == 'AquaMarine - Azimut Grande S10' || titulo =='AquaMarine - Azimut S7' 
      || titulo =='AquaMarine - Nautitech 46 Open' || titulo =='AquaMarine - Lagoon 46'){
+        srcimagem = `<img src="../../img/Carrinho/${cartitens[i].tag}.png"></img>`
+    }
 
-        for(let i=0; i < cartitens.length; i++){
-            
-            somavalor += cartitens[i].preço
+    console.log(cartitens)
 
-            carrinhohtml.innerHTML +=  `
-            <div  class="produto">
+    for(let i=0; i < cartitens.length; i++){
+        
+        somavalor += cartitens[i].preço
 
-                <div class="deletarproduto">
-                    <label>
-                        <span></span>
-                        <span></span>
-                    </label>
-                </div>
+        carrinhohtml.innerHTML +=  `
+        <div  class="produto">
 
-                <div class="produtodv1">
-                    <img src="../../img/Carrinho/${cartitens[i].tag}.png">
-                </div>
-            
-                <div class="produtodv2">
-                    <h4>${cartitens[i].nome}</h4>
-                    <p>Retirada: ${cartitens[i].datainicial}  </p>
-                    <p>Devolução: ${cartitens[i].datafinal}  </p>
-                    <p>Quantidade de dias: ${cartitens[i].dias}  </p>
-                    <p>Valor do aluguel: R$ ${cartitens[i].preço}</p>
-                </div>
+            <div class="deletarproduto">
+                <label>
+                    <span></span>
+                    <span></span>
+                </label>
             </div>
-            ` 
-        }
+
+            <div class="produtodv1">
+                ${srcimagem}
+            </div>
+        
+            <div class="produtodv2">
+                <h4>${cartitens[i].nome}</h4>
+                <p>Retirada: ${cartitens[i].datainicial}  </p>
+                <p>Devolução: ${cartitens[i].datafinal}  </p>
+                <p>Quantidade de dias: ${cartitens[i].dias}  </p>
+                <p>Valor do aluguel: R$ ${cartitens[i].preço}</p>
+            </div>
+        </div>
+        ` 
     }
 
     valortotal.innerHTML = ''
@@ -165,7 +112,6 @@ function atualizar(){
             <a id="efetuarpagamento">Efetuar Pagamento</a>
         </div>
     `
-
 
     // evento click no botão de pagar
     let efPag = document.getElementById('efetuarpagamento')
